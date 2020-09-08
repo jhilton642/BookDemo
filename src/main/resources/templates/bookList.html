@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <title>Books</title>
+    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+    <form class="form-horizontal" th:action="@{/books/search}" method="post">
+        <div class="form-group">
+            <label class="col-sm-1 control-label">Author:</label>
+            <div class="col-sm-2">
+                <input type="text" class="form-control" name="author" th:value="${author}"/>
+            </div>
+            <div class="col-sm-2">
+                <button type="submit" class="btn btn-default">Submit</button>
+            </div>
+        </div>
+    </form>
+    <form class="form-horizontal" th:action="@{/books/title}" method="post">
+        <div class="form-group">
+            <label class="col-sm-1 control-label">Title:</label>
+            <div class="col-sm-2">
+                <input type="text" class="form-control" name="title" th:value="${title}"/>
+            </div>
+            <div class="col-sm-2">
+                <button type="submit" class="btn btn-default">Submit</button>
+            </div>
+        </div>
+    </form>
+    <hr>
+    <div th:if="${not #lists.isEmpty(books)}">
+        <h3>Book List</h3>
+        <table class="table table-striped">
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Page Count</th>
+                <th>View</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            <tr th:each="book : ${books}">
+                <td th:text="${book.id}">Id</td>
+                <td th:text="${book.title}">Title</td>
+                <td th:text="${book.author}">Author</td>
+                <td th:text="${book.pageCount}">Page Count</td>
+
+                <td><a th:href="${ '/books/'        + book.id}">View</a></td>
+                <td><a th:href="${ '/books/edit/'   + book.id}">Edit</a></td>
+                <td><a th:href="${ '/books/delete/' + book.id}">Delete</a></td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>

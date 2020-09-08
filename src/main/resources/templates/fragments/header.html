@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+          th:href="@{/webjars/bootstrap/3.4.4/css/bootstrap.min.css}"
+          media="screen"/>
+
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"
+           th:src="@{/webjars/jquery/2.1.4/jquery.min.js}">
+    </script>
+
+    <link href="../../static/css/EdgeTech.css"
+          th:href="@{css/EdgeTech.css}" rel="stylesheet" media="screen"/>
+</head>
+<body>
+
+<div class="container">
+    <div th:fragment="header">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#" th:href="@{/}">Home</a>
+                    <ul class="nav navbar-nav">
+                        <li><a href="#" th:href="@{/books/}">List Books</a></li>
+                        <li><a href='/books/new'>Create Book</a></li>
+                        <li><a href='/books/add'>Random Book</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="jumbotron">
+            <div class="row text-center">
+                <div class="">
+                    <h3>Edge Tech Academy</h3>
+                    <h4>Java / Spring Boot Full Stack Web App</h4>
+                </div>
+            </div>
+            <div class="row text-center">
+                <img src="../../static/images/EdgeTech.png" width="188"
+                     th:src="@{/images/EdgeTech.png}"/>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
