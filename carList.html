@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <title>Car</title>
+    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+<a href='/cars/new'>Create Car</a>
+    <hr>
+    <div th:if="${not #lists.isEmpty(cars)}">
+        <h3>Car List</h3>
+        <table class="table table-striped">
+            <tr>
+                <th>Id</th>
+                <th>ImageUrl</th>
+                <th>Make</th>
+                <th>Model</th>
+                <th>Miles</th>
+                <th>View</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            <tr th:each="car : ${cars}">
+                <td th:text="${car.id}">Id</td>
+                <td><img th:src="${car.imageUrl}" width="35" height="40"/></td>
+                <td th:text="${car.make}">Make</td>
+                <td th:text="${car.model}">Model</td>
+                <td th:text="${car.miles}">Miles</td>
+
+                <td><a th:href="${ '/cars/'        + car.id}">View</a></td>
+                <td><a th:href="${ '/cars/edit/'   + car.id}">Edit</a></td>
+                <td><a th:href="${ '/cars/delete/' + car.id}">Delete</a></td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>
